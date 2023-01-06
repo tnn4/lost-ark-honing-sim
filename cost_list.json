@@ -1,0 +1,40 @@
+{
+    "cost-3.5-armor": [
+        {"item-level": 1340, "honing-level": 0, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1345, "honing-level": 1, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1350, "honing-level": 2, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1355, "honing-level": 3, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1360, "honing-level": 4, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1365, "honing-level": 5, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1370, "honing-level": 6, "honing-rate": 0.6, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1375, "honing-level": 7, "honing-rate": 0.45, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1380, "honing-level": 8, "honing-rate": 0.3, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1385, "honing-level": 9, "honing-rate": 0.3, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1390, "honing-level": 10, "honing-rate": 0.3, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1395, "honing-level": 11, "honing-rate": 0.15, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1400, "honing-level": 12, "honing-rate": 0.15, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1405, "honing-level": 13, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1410, "honing-level": 14, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1415, "honing-level": 15, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1430, "honing-level": 16, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1}
+     ],
+     "cost-3.5-weapon": [
+        {"item-level": 1340, "honing-level": 0, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1345, "honing-level": 1, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1350, "honing-level": 2, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1355, "honing-level": 3, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1360, "honing-level": 4, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1365, "honing-level": 5, "honing-rate": 1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1370, "honing-level": 6, "honing-rate": 0.6, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1375, "honing-level": 7, "honing-rate": 0.45, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1380, "honing-level": 8, "honing-rate": 0.3, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1385, "honing-level": 9, "honing-rate": 0.3, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1390, "honing-level": 10, "honing-rate": 0.3, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1395, "honing-level": 11, "honing-rate": 0.15, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1400, "honing-level": 12, "honing-rate": 0.15, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1405, "honing-level": 13, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1410, "honing-level": 14, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1415, "honing-level": 15, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1},
+        {"item-level": 1430, "honing-level": 16, "honing-rate": 0.1, "crystals": 1, "shards": 1, "leap": 1, "silver": 1, "gold": 1}
+     ]
+}

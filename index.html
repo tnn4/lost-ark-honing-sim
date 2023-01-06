@@ -1,0 +1,405 @@
+<!doctype html>
+
+<html>
+    <h1>The "Honing" Corner</h1>
+    <h2>Welcome to the Lost Ark casino!</h2>
+    <p>Use this to get a sense of the chances for different success rates</p>
+    <p>Set base honing rate and press Feeling Lucky to try it out.</p>
+    <!--RNG-->
+    <button onclick="rng()">Test RNG()</button>
+    <p id="rng-output-box"></p>
+
+    <!--HONE-->
+    
+    <!-- Add Mats -->
+    <p>Add mats / total mats</p>
+    <!-- blue crystals -->
+    <!-- let javascript change value of input field directly instead ? -->
+    <input type="number" name="blue-crystals" id="blue-crystals">
+    <button onclick="add_mats(document.getElementById('blue-crystals').value, 'blue')"> + blue crystals </button>
+    <label for="blue-crystals-total"></label>
+    <input type="number" value="0" name="blue-crystals-total" id="blue-crystals-total">
+    <br>
+
+    <!-- oj crystals -->
+    <input type="number" name="oj-crystals" id="oj-crystals">
+    <button onclick="add_mats(document.getElementById('oj-crystals').value, 'oj')"> + oj crystals </button>
+    <label for="oj-crystals-total"></label>
+    <input type="number" value="0" id="oj-crystals-total">
+    <br>
+
+    <!-- shards -->
+    <input type="number" name="shards" id="inv-shards">
+    <button onclick="add_mats(document.getElementById('inv-shards').value, 'shards')"> + shards </button>
+    <label for="oj-crystals-total"></label>
+    <input type="number" value="0" id="shards-total">
+    <br>
+
+    <!-- leapstones -->
+    <input type="number" id="add-leapstone">
+    <button onclick="add_mats(document.getElementById('add-leapstone').value, 'leapstone')">+ leapstones</button>
+    <label for="leapstone-total"></label>
+    <input type="number" value="0" id="leapstone-total">
+    <br>
+
+    <!-- fusion -->
+    
+    <input type="number" id="add-fusion">
+    <button onclick="add_mats(document.getElementById('add-fusion').value, 'fusion')">+ fusion</button>
+    <label for="fusion-total"></label>
+    <input type="number" value="0" id="fusion-total">
+    <br>
+
+    <!-- silver -->
+    <input type="number" id="add-silver">
+    <button onclick="add_mats(document.getElementById('add-silver').value, 'silver')">+ silver</button>
+    <label for="silver-total"></label>
+    <input type="number" value="0" id="silver-total">
+    <br>
+
+    <!-- gold -->
+    <input type="number" id="add-gold">
+    <button onclick="add_mats(document.getElementById('add-gold').value, 'gold')">+ gold</button>
+    <label for="gold-total"></label>
+    <input type="number" value="0" id="gold-total">
+    <br>   
+
+    <div id="equipment"></div>
+    
+    <!-- Costs -->
+    <br>
+    
+    <p>Cost</p>
+    <a href="https://lost-ark.maxroll.gg/resources/gear-honing-system" target="_blank">Find honing costs and rates here</a>
+    <br>
+    <input type="number" id="cost-blue">blue cost</input>
+    <br>
+    <input type="number" id="cost-blue">oj cost</input>
+    <br>
+    <input type="number" id="leapstones">leapstones</input>
+    <br>
+    <input type="number" id="shard">shards</input>
+    <br>
+    <input type="number" id="fusion">fusion</input>
+    <br>
+    <input type="number" id="silver">silver</input>
+    <br>
+    <input type="number" id="gold">gold</input>
+    <br>
+
+    <!-- Honing -->
+    <!-- honing rate -->
+    <p>Honing</p>
+
+    <!-- Base Rates-->
+    <label for="honing-rate-base">base honing rate (0-1)</label>
+    <input type="number"  id="honing-rate-base">
+    
+    <!-- Button_honing -->
+    <button onclick="calculate_result(document.getElementById('honing-rate-base').value)">Feeling Lucky</button>
+    <button onclick="reset()">reset</button>
+    <br>
+    
+    <!-- current honing chance-->
+    <p id="honing-rate-current"></p>
+    
+    <p id="gear-score"></p>
+
+    <p id="artisans-energy"></p>
+
+    <p id="fails-expected"></p>
+    
+    <label for="fails-current">failures in current trial: </label>
+    <input type="number" value="0" id="fails-current"></input>
+    
+    <p id="fails-total"></p>
+
+
+    <!-- RESULTS -->
+    <div id="result-container">
+        <p>RESULT:</p>
+    </div>
+
+    <!-- CODE -->
+    <script>
+        console.log("Starting");
+        var $ = document.getElementById.bind(document);
+
+        class Equipment {
+            // use json to get data for the fields
+            tier = 1;
+            honing_lvl = 0;
+            cost_crystals = 0;
+            cost_shards = 0;
+            cost_leapstones = 0;
+            cost_silver = 0;
+            cost_gold = 0;
+            honing_rate_base;
+            honing_rate_current;
+
+            // optional mats
+            solar_grace = 0;
+            solar_blessing = 0;
+            solar_protection = 0;
+
+            fails = 0;
+
+            constructor(name){
+                this.name = name;
+            }
+
+            set_tier(t){
+                this.tier = t;
+            }
+            set_lvl(l){
+                this.honing_lvl = l;
+            }
+            calculate_honing_rate(){
+                honing_rate_current = honing_rate_base + (fails * honing_rate_base * 0.1);
+            }
+            reset_honing(){
+                fails = 0;
+            }
+            hone(){
+                // check if materials available
+                // consume mats from inventory
+                // calculate honing rates
+                // generate result
+            }
+
+        }
+
+        /*
+        let head = new Armor('head');
+        let shoulders = new Armor('shoulders');
+        let gloves = new Armor('gloves');
+        let body = new Armor('body');
+        let legs = new Armor('legs');
+        let weapon = new Weapon('weapon');
+        */
+
+
+        let chance = 0;
+        let artisans_energy = 0;
+        let artisans_energy_increase;
+        let honing_rate_base;
+        let honing_rate_increase;
+        let honing_rate_current;
+
+        let current_gear_score = 0;
+        
+        let fails_current = 0;
+        let fails_total = 0;
+        
+        
+
+        let mats_inv = {
+            blue: 0,
+            oj: 0,
+            leapstone: 0,
+            shard: 0,
+            silver: 0,
+            gold: 0,
+            fusion: 0
+        }
+    
+        let div_result = document.getElementById('result-container');
+
+        function rng(){
+            chance = Math.random();
+
+            $("rng-output-box").innerHTML = chance;
+            console.log(chance);
+        }
+
+        var probability = function(n){
+            return !!n && Math.random() <= n;
+        };
+
+        // add correct mat
+        function add_mats(n, type){
+            
+            switch(type){
+                case 'blue':
+                    console.log("Adding crystals: " + n);
+                    mats_inv.blue += parseInt(n);
+                    document.getElementById('blue-crystals-total').value = mats_inv.blue;
+                    break;
+                case 'oj':
+                    console.log("Adding crystals: " + n);
+                    mats_inv.oj += parseInt(n);
+                    document.getElementById('oj-crystals-total').value = mats_inv.oj;
+                    break;
+                case 'leapstone':
+                    console.log("Adding leapstones: " + n);
+                    mats_inv.leapstone += parseInt(n);
+                    document.getElementById('leapstone-total').value = mats_inv.leapstone;
+                    break;
+                case 'shards':
+                    console.log("Adding shards: " + n);
+                    mats_inv.shard += parseInt(n);
+                    document.getElementById('shards-total').value = mats_inv.shard;
+                    break;
+                case 'fusion':
+                    console.log("Adding shards: " + n);
+                    mats_inv.fusion += parseInt(n);
+                    document.getElementById('fusion-total').value = mats_inv.fusion;
+                    break;
+                case 'silver':
+                    console.log("Adding silver: " + n);
+                    mats_inv.silver += parseInt(n);
+                    document.getElementById('silver-total').value = mats_inv.silver;
+                    break;
+                case 'gold':
+                    console.log("Adding gold: " + n);
+                    mats_inv.gold += parseInt(n);
+                    document.getElementById('gold-total').value = mats_inv.gold;
+                    break;
+            }
+            
+        }
+
+        // honing
+
+        // artisans energy
+        let add_artisans_energy = function(p){
+            artisans_energy_increase = .465 * p;
+            artisans_energy += artisans_energy_increase;
+            if(artisans_energy >= 1){
+                artisans_energy = 1;
+            }
+            return artisans_energy;
+        }
+
+        // honing rate increase from failure
+        let increase_honing_rate = function(p){
+            return p * .10;
+        }
+
+        function calculate_honing_rate(base_rate){
+            let result;
+            fails_current = parseInt(document.getElementById('fails-current').value);
+            
+            
+            result = base_rate + parseFloat(fails_current * .1 * base_rate)
+            console.log("calculating current honing rate: " + result)
+            return result;
+        }
+
+        // RESET
+        function reset(){
+            console.log("RESET");
+            artisans_energy = 0;
+            fails_total = 0;
+            fails_current = 0;
+            current_gear_score = 0;
+            honing_rate_current = document.getElementById('honing-rate-base').value;
+            document.getElementById("fails-current").value = fails_current;
+            print_stats();
+        }
+
+        // RESULT
+        function calculate_result(n){ //main function
+            
+            honing_rate_current = parseFloat(n);
+            
+    
+            if (isNaN(honing_rate_current)){
+                div_result.insertAdjacentHTML('afterend', "<span style='color:red'> need a success rate </span><br>");
+                return;
+            }
+            
+            let string_result = '';
+            let result = probability(honing_rate_current); // turn n to string
+
+            console.log("honing rate current: " + honing_rate_current);
+            console.log("type of result is: " + typeof result);
+            console.log("success: " + result);
+            console.log("artisans energy: " + artisans_energy);
+            console.log("artisans energy type: " + typeof artisans_energy);
+
+            if(artisans_energy == 1){ // pity hone
+                string_result = 'PITY HONE! Success' + '<br>';
+                artisans_energy = 0;
+                fails_current = 0;
+                document.getElementById("fails-current").value = fails_current;
+                current_gear_score += 1;
+            }
+            else if (result == true){ // success, reset everything
+                string_result = 'Success' + '<br>';
+                artisans_energy = 0;
+                fails_current = 0;
+                document.getElementById("fails-current").value = fails_current;
+                current_gear_score += 1;
+            }
+            else { // failure
+                // increase base honing chance after failure and artisan's energy
+                string = 'Fail' + '<br>';
+                string_result = "<span style='color:red'>" + string + "</span>";
+                add_artisans_energy(n);
+                fails_current += 1;
+                document.getElementById("fails-current").value = fails_current;
+                fails_total += 1;
+            }
+            honing_rate_current = calculate_honing_rate(parseFloat(n));
+            // Print stuff
+
+
+            print_stats();
+            
+            // PRINT RESULT
+            div_result.insertAdjacentHTML('afterend', string_result);
+            console.log("=== TRIAL DONE ===");
+        }
+
+        function print_stats(){
+            print_gear_score();
+            print_honing_rate_current();
+            print_artisans_energy();
+            print_fails();
+            print_expected_hones();
+        }
+
+        function print_gear_score(){
+            document.getElementById("gear-score").innerHTML = "Gear score: +" + current_gear_score;
+            console.log("type of string_result is: " + typeof string_result);
+        }
+
+        function print_artisans_energy(){
+            document.getElementById("artisans-energy").innerHTML = "Artisans energy: " + artisans_energy;
+        }       
+
+        function print_fails(){
+            document.getElementById("fails-total").innerHTML = "fails total: " + fails_total;
+            
+        }
+
+        function print_honing_rate_current(){
+            document.getElementById("honing-rate-current").innerHTML = "current honing rate: " + honing_rate_current;
+        }
+
+        function print_expected_hones(){
+            let expected_trials = 1 / honing_rate_current - 1;
+            document.getElementById("fails-expected").innerHTML = "expected fails before next success: " + expected_trials;
+        }
+
+        function clearBox(elementID){
+            document.getElementById(elementID).innerHTML = "";
+        }
+
+    /* 
+        <!-- beforebegin -->
+        <p>
+            <!-- afterbegin -->
+            foo
+            <!-- beforeend -->
+        </p>
+        <!-- afterend -->
+
+    */
+    </script>
+
+</html>
+
+<!-- Author: tnn4 -->
+<!-- License: MIT -->

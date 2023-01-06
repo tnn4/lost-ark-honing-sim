@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+    <body>
+        <p>How to use: click Initialize, now click on roll to gamble</p>
+        <div id="load-status"></div>
+        <button onclick="makeBucket()">Initialize</button>
+        <br>
+        <button onclick="printRandom()">generate random engravings</button>
+        
+        <div id="bucket-stats"></div>
+        <div id="bucket-engravings"></div>
+
+        <p id="random-number"></p>
+
+        <button onclick="roll_stats()">roll stats</button>
+        <button onclick="roll_engravings()">roll engravings</button>
+        
+        <p id="total-rolls"></p>
+        <p id="stat-1"></p>
+        <p id="stat-2"></p>
+        <p id="engraving-1"></p>
+        <p id="engraving-2"></p>
+    </body>
+
+    <script>
+
+        
+        let bucket_stats = [];
+        let bucket_engravings = [];
+        let total_rolls = 0;
+        let separator = '=========';
+        
+        window.onload = function(){
+            makeBucket();
+            document.getElementById('load-status').innerHTML = 'done loading';
+            bucket_stats = makeBucket(stats.length);
+            console.log('made bucket_stats');
+            bucket_engravings = makeBucket(engravings.length);
+            console.log('made bucket_engravings');
+        }
+
+        const stats = [
+            'Crit',
+            'Spec',
+            'Swiftness',
+            'Expertise',
+            'Domination',
+        ]
+
+        const engravings = [
+            'Disrepect',
+            'Spirit Absorption',
+            'Ether Enhancment',
+            'Stabilized Status',
+            'Grudge',
+            'Super Charge',
+            'Strong Will',
+            'Drops of Ether',
+            'Crisis Evasion',
+            'Keen Blunt Weapon',
+            'Vital Point Hit',
+            'Increased Max MP',
+            'MP Regen',
+            'Master of Escape',
+            'Fortitude',
+            'Crushing Fist',
+            'Shield Piercing',
+            'Masters Tenacity',
+            'Divine Protection',
+            'Heavy Armor',
+            'Explosive Expert',
+            'Enhanced Shield',
+            'Necromancy',
+            'Preemptive Strike',
+            'Lightning Fury',
+            'Cursed Doll',
+            'Contender',
+            'Ambush Master',
+            'Magick Stream',
+            'Barricade',
+            'Raid Captain',
+            'Awakening',
+            'Master Brawler',
+            'Mass Increase',
+            'Propulsion',
+            'Hit Master',
+            'All-out Attack',
+            'Expert',
+            'Emergency Rescue',
+            'Precise Dagger'
+        ];
+    
+        let makeBucketHelper = function(list){
+            
+            let bucket = [];
+            let l = list.length;
+
+            for(let i=0; i < l; i++){
+                bucket.push(i);
+            }
+            
+            return bucket;
+        };
+
+        function makeBucket(){
+            bucket_stats = makeBucketHelper(stats);
+            bucket_engravings = makeBucketHelper(engravings);
+            document.getElementById("bucket-stats").innerHTML = bucket_stats;
+            document.getElementById("bucket-engravings").innerHTML = bucket_engravings;
+        }
+
+    
+        function getRandomFromBucket(bucket){
+            let randomIndex = Math.floor(Math.random()*bucket.length);
+            let end = randomIndex + 1;
+            console.log('bucket slice: ' + bucket.slice(randomIndex, end));
+            return bucket.slice(randomIndex, end); // splice(start, deleteCount), slice(start, end)
+        } 
+        
+
+    
+        function roll_stats(){
+            let roll = getRandomFromBucket(bucket_stats);
+            
+            console.log('roll:' + roll);
+            document.getElementById('stat-1').innerHTML = stats[roll];
+            
+            let last_roll = parseInt(roll);
+            roll = parseInt(getRandomFromBucket(bucket_stats));
+
+            console.log('last roll:' + last_roll);
+            console.log('roll:' + roll);
+            console.log('typeof last_role: ' + typeof last_roll);
+            console.log('typeof role: ' + typeof roll);
+            console.log('equality: ' + last_roll == roll);
+
+            if (roll == last_roll){
+                console.log('duplicate');
+            }
+
+            while( roll == last_roll) {
+                console.log('duplicate!!');
+                roll = getRandomFromBucket(bucket_stats);
+            }
+            document.getElementById('stat-2').innerHTML = stats[roll];
+            console.log(separator);
+        }
+
+        function roll_engravings(){
+            let roll = getRandomFromBucket(bucket_engravings);
+
+            console.log('roll: ' + roll);
+
+            let last_roll = parseInt(roll);
+            document.getElementById('engraving-1').innerHTML = engravings[roll];
+            roll = parseInt(getRandomFromBucket(bucket_engravings));
+            // roll again if you get duplicates
+            while( roll == last_roll){
+                console.log('duplicate!!');
+                roll = getRandomFromBucket(bucket_engravings);
+            }
+            document.getElementById('engraving-2').innerHTML = engravings[roll];
+            total_rolls += 1;
+            document.getElementById('total-rolls').innerHTML = total_rolls;
+        }
+    </script>
+
+</html>
+
+
